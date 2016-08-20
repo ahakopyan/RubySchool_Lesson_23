@@ -1,4 +1,4 @@
-#encoding: utf-8
+ #encoding: utf-8
 require 'rubygems'
 require 'sinatra'
 require 'sinatra/reloader'
@@ -16,16 +16,10 @@ get '/visit' do
 end
 
 post '/visit' do
+
 	@username = params[:username]
 	@phone = params[:phone]
 	@datetime = params[:datetime]
-
-	@title = 'Благодарим вас за запись!'
-	@message = "Дорогой: #{@username}, Ваш телефон: #{@phone}, Дата и время: #{@datetime}"
-
-	f = File.open './public/users.txt', 'a'
-	f.write "Клиент: #{@username}, Телефон: #{@phone}, Дата и время: #{datetime}"
-	f.close
-
-	erb :visit
+	@barber = params[:barber]
+	erb "Ok! Ваше имя:ß #{@username}, ваш номер телефона: #{@phone}, время записи: #{@datetime}, ваш мастер: #{@barber}" 
 end
